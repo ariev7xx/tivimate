@@ -1,5 +1,6 @@
 # installasi
 **Install tivimate premium**
+
 install termux terlebih dahulu
 lalu copy code di bawah ke termux
 
