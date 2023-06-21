@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 if [ ! -f "tivimate.apk" ];then
 echo download data..
 curl -O https://raw.githubusercontent.com/ariev7xx/tivimate/main/data.zip &> /dev/null
