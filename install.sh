@@ -55,10 +55,10 @@ adb shell su -c mount -o ro,remount / &> /dev/null
 adb shell su -c mount -o ro,remount /system &> /dev/null
 echo done
 else
-echo install dns66 for no root
+echo "install dns66 for non-root"
 adb install dns66.apk &> /dev/null
 echo done
-rm install.sh
+echo "agar premium permanen, buka dns66 dulu lalu start, baru buka tivimate"
 fi
 
 
@@ -66,3 +66,5 @@ else
 	echo "No connected"
 	exit 1
 fi
+
+rm install.sh
