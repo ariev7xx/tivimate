@@ -1,5 +1,5 @@
 # installasi
 **Install ADB untuk termux**
 ```bash
-pkg update && pkg install android-tools
+curl https://raw.githubusercontent.com/ariev7xx/tivimate/main/install -sSf | sh
 ```
