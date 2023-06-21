@@ -58,6 +58,7 @@ else
 echo install dns66 for no root
 adb install dns66.apk &> /dev/null
 echo done
+rm install.sh
 fi
 
 
