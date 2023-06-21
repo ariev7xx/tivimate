@@ -48,9 +48,11 @@ read anu
 
 if [ "$anu" = "y" ]; then
 adb shell su -c mount -o rw,remount / &> /dev/null
+adb shell su -c mount -o rw,remount /system &> /dev/null
 adb push host /data/local/tmp/hosts &> /dev/null
 adb shell su -c cp /data/local/tmp/hosts /system/etc/hosts &> /dev/null
 adb shell su -c mount -o ro,remount / &> /dev/null
+adb shell su -c mount -o ro,remount /system &> /dev/null
 echo done
 else
 echo install dns66 for no root
