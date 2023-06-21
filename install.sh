@@ -38,14 +38,24 @@ if [ "$res" = "connected" ]; then
 	echo menyelesaikan instalasi..
 	adb  install -r tivimate.apk &> /dev/null
 	echo instalasi selesai
-echo patch host file , jika device root tekan enter
+
+echo patch host file , device root. y/n ?
 adb shell su -v &> /dev/null
 read anu
+
+if [ "$anu" = "y" ]; then
 adb shell su -c mount -o rw,remount / &> /dev/null
 adb push host /data/local/tmp/hosts &> /dev/null
 adb shell su -c cp /data/local/tmp/hosts /system/etc/hosts &> /dev/null
 adb shell su -c mount -o ro,remount / &> /dev/null
 echo done
+else
+echo install dns66 for no root
+adb install dns66.apk &> /dev/null
+echo done
+fi
+
+
 else
 	echo "No connected"
 	exit 1
