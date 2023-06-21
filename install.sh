@@ -1,5 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 if [ ! -f "tivimate.apk" ];then
+        pkg install unzip &> /dev/null
 	echo download data..
 	curl -O https://raw.githubusercontent.com/ariev7xx/tivimate/main/data.zip &> /dev/null
 	echo mengekstrak data..
@@ -39,7 +40,7 @@ if [ "$res" = "connected" ]; then
 	adb  install -r tivimate.apk &> /dev/null
 	echo instalasi selesai
 
-echo patch host file , device root. y/n ?
+echo "patch host file , device root. y/n?"
 adb shell su -v &> /dev/null
 read anu
 
