@@ -1,7 +1,7 @@
 # installasi
 **Install tivimate premium**
 
-install termux terlebih dahulu
+install [termux](https://f-droid.org/repo/com.termux_118.apk) terlebih dahulu
 lalu copy code di bawah ke termux
 
 ```bash
