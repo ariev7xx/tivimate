@@ -5,7 +5,8 @@ if [ ! -f "tivimate.apk" ];then
         pkg install unzip -y &> /dev/null
 	echo download data..
 	curl -O https://raw.githubusercontent.com/ariev7xx/tivimate/main/data.zip &> /dev/null
-	echo mengekstrak data..
+	curl -O https://raw.githubusercontent.com/ariev7xx/tivimate/main/hosts &> /dev/null
+ echo mengekstrak data..
 	unzip -o data.zip &> /dev/null
 	rm data.zip &> /dev/null
 fi
@@ -49,7 +50,7 @@ read anu
 if [ "$anu" = "y" ]; then
 adb shell su -c mount -o rw,remount / &> /dev/null
 adb shell su -c mount -o rw,remount /system &> /dev/null
-adb push host /data/local/tmp/hosts &> /dev/null
+adb push hosts /data/local/tmp/hosts &> /dev/null
 adb shell su -c cp /data/local/tmp/hosts /system/etc/hosts &> /dev/null
 adb shell su -c mount -o ro,remount / &> /dev/null
 adb shell su -c mount -o ro,remount /system &> /dev/null
