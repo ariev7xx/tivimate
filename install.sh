@@ -5,9 +5,10 @@ if [ ! -d "tivimate" ];then
         pkg install unzip -y &> /dev/null
 	echo download data..
 	curl -O https://raw.githubusercontent.com/ariev7xx/tivimate/main/data.zip &> /dev/null
-	curl -O https://raw.githubusercontent.com/ariev7xx/tivimate/main/hosts &> /dev/null
+	
  echo mengekstrak data..
  mkdir tivimate
+ curl -o tivimate/hosts https://raw.githubusercontent.com/ariev7xx/tivimate/main/hosts &> /dev/null
 	unzip -o -d tivimate data.zip &> /dev/null
 	rm data.zip &> /dev/null
 fi
@@ -35,13 +36,13 @@ if [ "$res" = "connected" ]; then
 	echo menguninstall tivimate lama..
 	adb uninstall ar.tvplayer.tv &> /dev/null
 	echo menginstall patch..
-	adb install hook.apk &> /dev/null
+	adb install tivimate/hook.apk &> /dev/null
 	echo silahkan restore saat muncul popup
-	adb restore ar.tvplayer.tv.ab &> /dev/null
+	adb restore tivimate/ar.tvplayer.tv.ab &> /dev/null
 	echo setelah restore selesai tekan enter
 	read anu
 	echo menyelesaikan instalasi..
-	adb  install -r tivimate.apk &> /dev/null
+	adb  install -r tivimate/tivimate.apk &> /dev/null
 	echo instalasi selesai
 
 echo "patch host file , device root. y/n?"
@@ -51,14 +52,14 @@ read anu
 if [ "$anu" = "y" ]; then
 adb shell su -c mount -o rw,remount / &> /dev/null
 adb shell su -c mount -o rw,remount /system &> /dev/null
-adb push hosts /data/local/tmp/hosts &> /dev/null
+adb push tivimate/hosts /data/local/tmp/hosts &> /dev/null
 adb shell su -c cp /data/local/tmp/hosts /system/etc/hosts &> /dev/null
 adb shell su -c mount -o ro,remount / &> /dev/null
 adb shell su -c mount -o ro,remount /system &> /dev/null
 echo done
 else
 echo "install dns66 for non-root"
-adb install dns66.apk &> /dev/null
+adb install tivimate/dns66.apk &> /dev/null
 echo done
 echo "agar premium permanen, buka dns66 dulu lalu start, baru buka tivimate"
 fi
