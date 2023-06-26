@@ -8,7 +8,7 @@ if [ ! -d "tivimate" ];then
 	curl -O https://raw.githubusercontent.com/ariev7xx/tivimate/main/hosts &> /dev/null
  echo mengekstrak data..
  mkdir tivimate
-	unzip -o -d tivimate data.zip&> /dev/null
+	unzip -o -d tivimate data.zip &> /dev/null
 	rm data.zip &> /dev/null
 fi
 
