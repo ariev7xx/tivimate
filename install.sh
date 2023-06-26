@@ -66,8 +66,7 @@ fi
 
 
 else
-	echo "No connected"
-	exit 1
+	echo "No connected" 
 fi
 
 rm i.sh
