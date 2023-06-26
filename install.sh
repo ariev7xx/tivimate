@@ -70,4 +70,4 @@ else
 	exit 1
 fi
 
-rm install.sh
+rm i.sh
