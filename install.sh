@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-if [ ! -f "tivimate.apk" ];then
+if [ ! -d "tivimate" ];then
         echo menyiapkan instalasi 
 	pkg update -y &> /dev/null
         pkg install unzip -y &> /dev/null
@@ -7,7 +7,8 @@ if [ ! -f "tivimate.apk" ];then
 	curl -O https://raw.githubusercontent.com/ariev7xx/tivimate/main/data.zip &> /dev/null
 	curl -O https://raw.githubusercontent.com/ariev7xx/tivimate/main/hosts &> /dev/null
  echo mengekstrak data..
-	unzip -o data.zip &> /dev/null
+ mkdir tivimate
+	unzip -o -d tivimate data.zip&> /dev/null
 	rm data.zip &> /dev/null
 fi
 
