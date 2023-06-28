@@ -22,7 +22,7 @@ fi
 
 adb kill-server &> /dev/null
 adb devices &> /dev/null
-echo masukan ip device:
+echo "Masukkan IP address Target:"
 read IP
 adb connect $IP &> /dev/null
 echo jika muncul popup fingerprint izinkan. lalu enter
