@@ -47,7 +47,7 @@ if [ "$res" = "connected" ]; then
 	echo instalasi selesai
 clear
 echo "jika muncul popup Akses root, izinkan"
-echo "Device targer rooted ?. (y/n)"
+echo "Device target rooted ?. (y/n)"
 adb shell su -v &> /dev/null
 read anu
 
