@@ -25,6 +25,7 @@ adb devices &> /dev/null
 echo "Masukkan IP address Target:"
 read IP
 adb connect $IP &> /dev/null
+clear
 echo "jika muncul popup fingerprint, izinkan. lalu ENTER"
 read aja
 adb kill-server &> /dev/null
