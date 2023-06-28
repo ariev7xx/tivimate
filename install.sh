@@ -68,7 +68,7 @@ fi
 
 else
 clear
-	echo "Not connectedconnected, Please try again" 
+	echo "Not Connected, Please try again" 
 fi
 
 rm i.sh
