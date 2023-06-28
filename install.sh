@@ -46,6 +46,7 @@ if [ "$res" = "connected" ]; then
 	adb  install -r tivimate/tivimate.apk &> /dev/null
 	echo instalasi selesai
 clear
+echo "jika muncul popup Akses root, izinkan"
 echo "Device targer rooted ?. (y/n)"
 adb shell su -v &> /dev/null
 read anu
