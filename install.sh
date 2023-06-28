@@ -19,13 +19,13 @@ then
 	pkg update -y &> /dev/null
 	pkg install android-tools -y &> /dev/null
 fi
-
+clear
 adb kill-server &> /dev/null
 adb devices &> /dev/null
 echo "Masukkan IP address Target:"
 read IP
 adb connect $IP &> /dev/null
-echo jika muncul popup fingerprint izinkan. lalu enter
+echo "jika muncul popup fingerprint, izinkan. lalu ENTER"
 read aja
 adb kill-server &> /dev/null
 adb devices &> /dev/null
@@ -44,8 +44,8 @@ if [ "$res" = "connected" ]; then
 	echo menyelesaikan instalasi..
 	adb  install -r tivimate/tivimate.apk &> /dev/null
 	echo instalasi selesai
-
-echo "patch host file , device root. y/n?"
+clear
+echo "Device targer rooted ?. (y/n)"
 adb shell su -v &> /dev/null
 read anu
 
