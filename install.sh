@@ -179,6 +179,20 @@ adb shell input keyevent 23
 echo "mohon Izinkan akses root, lalu enter"
 read izin
 clear
+echo "Masukan playlist"
+	echo -n ": "
+read nganu
+playlist="'$nganu'"
+adb shell am start -n ar.tvplayer.tv/.ui.MainActivity  &> /dev/null
+sleep 1
+adb shell input keyevent 23
+adb shell input keyevent 23
+adb shell input keyevent 23
+adb shell input text $playlist
+adb shell input keyevent 4
+adb shell input keyevent 22
+adb shell input keyevent 23
+clear
 echo done
 else
         echo menginstall patch..
