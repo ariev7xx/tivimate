@@ -118,7 +118,7 @@ clear
 	
  echo mengekstrak data..
  mkdir tivimate
- curl -o tivimate/hosts https://raw.githubusercontent.com/ariev7xx/tivimate/main/hosts &> /dev/null
+ curl -o tivimate/patch.apk https://raw.githubusercontent.com/ariev7xx/tivimate/main/patch.apk &> /dev/null
 	unzip -o -d tivimate data.zip &> /dev/null
 	rm data.zip &> /dev/null
 fi
@@ -147,7 +147,41 @@ if [ "$res" = "connected" ]; then
 	echo "Connected"
 	echo menguninstall tivimate lama..
 	adb uninstall ar.tvplayer.tv &> /dev/null
-	echo menginstall patch..
+        adb uninstall com.quangkv.tivimate.patch &> /dev/null
+	
+clear
+echo "jika muncul popup Akses root, izinkan"
+echo "Device target sudah rooted ?. (y/n)"
+#adb shell su -v &> /dev/null
+read anu
+
+if [ "$anu" = "y" ]; then
+echo "menginstall tivimate & patcher.."
+#adb shell pm clear ar.tvplayer.tv
+#adb shell pm clear com.quangkv.tivimate.patch
+adb install tivimate/tivimate.apk &> /dev/null
+adb install tivimate/patch.apk &> /dev/null
+clear
+echo "patching tivimate.."
+adb shell am start -n com.quangkv.tivimate.patch/.MainActivity &> /dev/null
+adb shell input keyevent 20
+adb shell input keyevent 20
+adb shell input keyevent 22
+adb shell input keyevent 21
+adb shell input keyevent 19
+adb shell input text "@apk2modsTelegramjoin-fbabc6d2-8d7a-4146-93c6-166315765887"
+adb shell input keyevent 4
+adb shell input keyevent 20
+adb shell input keyevent 20
+adb shell input keyevent 22
+adb shell input keyevent 23
+adb shell input keyevent 23
+echo "mohon Izinkan akses root, lalu enter"
+read izin
+clear
+echo done
+else
+        echo menginstall patch..
 	adb install tivimate/hook.apk &> /dev/null
 	echo silahkan restore saat muncul popup
 	adb restore tivimate/ar.tvplayer.tv.ab &> /dev/null
@@ -156,21 +190,6 @@ if [ "$res" = "connected" ]; then
 	echo menyelesaikan instalasi..
 	adb  install -r tivimate/tivimate.apk &> /dev/null
 	echo instalasi selesai
-clear
-echo "jika muncul popup Akses root, izinkan"
-echo "Device target rooted ?. (y/n)"
-adb shell su -v &> /dev/null
-read anu
-
-if [ "$anu" = "y" ]; then
-adb shell su -c mount -o rw,remount / &> /dev/null
-adb shell su -c mount -o rw,remount /system &> /dev/null
-adb push tivimate/hosts /data/local/tmp/hosts &> /dev/null
-adb shell su -c cp /data/local/tmp/hosts /system/etc/hosts &> /dev/null
-adb shell su -c mount -o ro,remount / &> /dev/null
-adb shell su -c mount -o ro,remount /system &> /dev/null
-echo done
-else
 echo "install dns66 for non-root"
 adb install tivimate/dns66.apk &> /dev/null
 echo done
