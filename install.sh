@@ -40,6 +40,7 @@ sleep 1
 adb shell input keyevent 23
 adb shell input keyevent 23
 adb shell input keyevent 23
+adb shell input keyevent 67
 adb shell input text $playlist
 adb shell input keyevent 4
 adb shell input keyevent 22
