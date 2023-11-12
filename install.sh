@@ -55,7 +55,7 @@ fi
 
 
 adb shell am start -n ar.tvplayer.tv/.ui.MainActivity  &> /dev/null
-sleep 1
+sleep 2
 adb shell input keyevent 23
 adb shell input keyevent 23
 adb shell input keyevent 23
@@ -205,7 +205,7 @@ echo "Masukan playlist"
 read nganu
 playlist="'$nganu'"
 adb shell am start -n ar.tvplayer.tv/.ui.MainActivity  &> /dev/null
-sleep 1
+sleep 2
 adb shell input keyevent 23
 adb shell input keyevent 23
 adb shell input keyevent 23
