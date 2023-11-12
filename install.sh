@@ -36,6 +36,7 @@ if [ "$res" = "connected" ]; then
 
 adb shell pm clear ar.tvplayer.tv
 adb shell am start -n ar.tvplayer.tv/.ui.MainActivity  &> /dev/null
+sleep 1
 adb shell input keyevent 23
 adb shell input keyevent 23
 adb shell input keyevent 23
