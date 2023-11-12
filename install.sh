@@ -28,9 +28,14 @@ adb devices &> /dev/null
 res=$(adb connect $IP | cut -d' ' -f1)
 
 if [ "$res" = "connected" ]; then
-adb shell pm clear ar.tvplayer.tv
+
 if adb shell dumpsys package ar.tvplayer.tv | grep -q "versionName=4.6.1"; then
-	echo "patching tivimate.."
+echo "Device target sudah rooted ?. (y/n)"
+read anu
+
+if [ "$anu" = "y" ]; then
+adb shell pm clear ar.tvplayer.tv
+echo "patching tivimate.."
 adb shell am start -n com.quangkv.tivimate.patch/.MainActivity &> /dev/null
 adb shell input keyevent 20
 adb shell input keyevent 20
@@ -47,6 +52,10 @@ adb shell input keyevent 23
 echo "mohon Izinkan akses root, lalu enter"
 read izin
 clear
+fi
+
+else
+adb shell pm clear ar.tvplayer.tv
 fi
 	echo "Masukan playlist"
 	echo -n ": "
