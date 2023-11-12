@@ -28,13 +28,32 @@ adb devices &> /dev/null
 res=$(adb connect $IP | cut -d' ' -f1)
 
 if [ "$res" = "connected" ]; then
-	
+adb shell pm clear ar.tvplayer.tv
+if adb shell dumpsys package ar.tvplayer.tv | grep -q "versionName=4.6.1"; then
+	echo "patching tivimate.."
+adb shell am start -n com.quangkv.tivimate.patch/.MainActivity &> /dev/null
+adb shell input keyevent 20
+adb shell input keyevent 20
+adb shell input keyevent 22
+adb shell input keyevent 21
+adb shell input keyevent 19
+adb shell input text "@apk2modsTelegramjoin-fbabc6d2-8d7a-4146-93c6-166315765887"
+adb shell input keyevent 4
+adb shell input keyevent 20
+adb shell input keyevent 20
+adb shell input keyevent 22
+adb shell input keyevent 23
+adb shell input keyevent 23
+echo "mohon Izinkan akses root, lalu enter"
+read izin
+clear
+fi
 	echo "Masukan playlist"
 	echo -n ": "
 	read nganu
 	playlist="'$nganu'"
 
-adb shell pm clear ar.tvplayer.tv
+
 adb shell am start -n ar.tvplayer.tv/.ui.MainActivity  &> /dev/null
 sleep 1
 adb shell input keyevent 23
